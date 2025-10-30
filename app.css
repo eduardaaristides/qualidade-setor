@@ -1,0 +1,664 @@
+/* =========================================================
+   FONTES
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* =========================================================
+   VARIÁVEIS DE COR
+========================================================= */
+:root {
+  --cor-primaria: #001A72;
+  --cor-secundaria: #f4af23;
+  --cor-fundo: #f9f9f9;
+  --cor-texto: #ffffff;
+  --cor-botao-hover: #45a049;
+  --cor-grey: #6c757d;
+}
+
+/* =========================================================
+   ESTILO GLOBAL
+========================================================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-primaria);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================================================
+   HEADER SUPERIOR (MARQUEE)
+========================================================= */
+.top-nav {
+  background-color: var(--cor-primaria);
+  padding: 0.5rem 0;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: slide 18s linear infinite;
+  font-weight: 600;
+  color: var(--cor-texto);
+  letter-spacing: 0.5px;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* =========================================================
+   HEADER INFERIOR (MENU PRINCIPAL)
+========================================================= */
+.bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  color: #222;
+  padding: 0.7rem 3rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo img {
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.03);
+}
+
+/* Links do menu */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--cor-primaria);
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Traço embaixo padrão */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+
+
+
+/* Hover */
+.nav-links a:hover::after {
+  background-color: var(--cor-secundaria);
+}
+
+.nav-links a:hover {
+  color: var(--cor-secundaria);
+}
+
+/* Badge (notificações, por exemplo) */
+.badge {
+  background-color: white;
+  color: #1c446b;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+/* ================================
+   SUBMENU (DROPDOWN)
+================================ */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+  min-width: 180px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px 14px;
+  color: var(--cor-primaria);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submenu li a:hover {
+  background-color: var(--cor-secundaria);
+  color: white;
+}
+
+/* Quando a classe "show" for adicionada (via React), o submenu aparece */
+.submenu.show {
+  display: block;
+}
+
+
+
+
+/* =========================================================
+   SEÇÃO SOBRE (ABOUT)
+========================================================= */
+.about-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 50px 70px;
+  margin: 40px 0;
+  min-height: 80vh;
+  gap: 50px;
+  background-color: rgba(252, 247, 247, 0.884);
+}
+
+/* =========================================================
+   CARROSSEL
+========================================================= */
+.carrossel-container {
+  flex: 1;
+  max-width: 950px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carrossel {
+  position: relative;
+  width: 100%;
+}
+
+.carrossel-imagem {
+  width: 100%;
+  height: 600px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Indicadores (bolinhas do carrossel) */
+.carrossel-indicadores {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.indicador {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.indicador.ativo {
+  background: var(--cor-primaria);
+  transform: scale(1.2);
+}
+
+/* =========================================================
+   CONTEÚDO TEXTO (TÍTULO E PARÁGRAFO)
+========================================================= */
+.main-content {
+  text-align: center;
+  margin-top: 10px;
+  max-width: 550px;
+}
+
+.main-content h2 {
+  color: var(--cor-primaria);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.main-content p {
+  color: var(--cor-grey);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   BOTÃO "SOBRE"
+========================================================= */
+.btn-about {
+  margin-top: 5px;
+  font-family: 'Poppins', sans-serif;
+  padding: 12px 35px;
+  background: linear-gradient(135deg, var(--cor-secundaria), #f3a02c);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho no hover */
+.btn-about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.btn-about:hover::before {
+  left: 100%;
+}
+
+.btn-about:hover {
+  background: linear-gradient(135deg, #f3a02c, var(--cor-secundaria));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.about-section .btn-about a {
+  color: white;
+  text-decoration: none;
+}
+
+/* =========================================================
+   SEÇÃO DA QUALIDADE E ORGANOGRAMA
+========================================================= */
+.quality-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto);
+  padding: 100px 80px;
+  gap: 50px;
+}
+
+/* === LADO ESQUERDO: INFORMATIVO === */
+.info-box {
+  flex: 1;
+  min-width: 300px;
+}
+
+.info-box h2 {
+  font-size: 1.8rem;
+  color: var(--cor-secundaria);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.info-box p {
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: justify;
+  margin-bottom: 25px;
+}
+
+.info-box .highlight {
+  color: var(--cor-secundaria);
+  font-weight: 600;
+}
+
+.info-box h3 {
+  color: var(--cor-secundaria);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links li {
+  margin-bottom: 10px;
+}
+
+.links a {
+  color: var(--cor-texto);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: var(--cor-secundaria);
+}
+
+/* === LADO DIREITO: ORGANOGRAMA === */
+.org-box {
+  flex: 1;
+  min-width: 320px;
+}
+
+.org-box h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--cor-secundaria);
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Estrutura geral do organograma */
+.org-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.org-top,
+.org-middle,
+.org-grid div {
+  background-color: #ffffff;
+  color: var(--cor-primaria);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Linhas do organograma */
+.org-line {
+  width: 2px;
+  height: 25px;
+  background-color: var(--cor-secundaria);
+  margin-bottom: 10px;
+}
+
+/* Grade dos nomes */
+.org-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   Footer
+========================================================= */
+
+footer {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   Login Page
+========================================================= */
+
+input{
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  box-sizing: border-box;
+}
+
+button{
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ===================== Fundo da página ===================== */
+.dashboard-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--cor-primaria), #f6f7fa);
+  padding: 8rem;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===================== Box do dashboard ===================== */
+.dashboard-box {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 1100px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* ===================== Título ===================== */
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #333333;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* ===================== Container do iframe ===================== */
+.dashboard-iframe-container {
+  width: 100%;
+  height: 60vh; /* altura inicial */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.cronograma-anual-page {
+  padding: 2rem;
+  background-color: #f7f8fa;
+  min-height: 80vh;
+  font-family: Arial, sans-serif;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.cronograma-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cronograma-table th,
+.cronograma-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.cronograma-table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.cronograma-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+@media (max-width: 900px) {
+  .quality-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .info-box,
+  .org-box {
+    margin: 0 auto;
+  }
+
+  .org-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .org-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 1024px) {
+  .dashboard-box {
+    padding: 1.5rem;
+  }
+  
+  .dashboard-title {
+    font-size: 2rem;
+  }
+  
+  .dashboard-iframe-container {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-box {
+    padding: 1rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.6rem;
+  }
+  
+  .dashboard-iframe-container {
+    height: 40vh;
+  }
+}
